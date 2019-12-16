@@ -1,108 +1,131 @@
 package com.filrouge.poe.lyon.JPAPOE.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="client")
+@Table(name = "client")
+@NamedQueries(value = { @NamedQuery(name = "Client.findAll", query = "SELECT CLI FROM Client AS CLI "),
+		@NamedQuery(name = "Client.findByName", query = " SELECT CLI FROM Client as CLI WHERE CLI.name like ?1") })
 public class Client {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer id;
-@Column(name = "nom", length = 50, nullable = false)
-private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(name = "nom", length = 50, nullable = false)
+	private String name;
 
-@Column(name = "prenom", length = 50, nullable = false)
-private String firstname;
+	@Column(name = "prenom", length = 50, nullable = false)
+	private String firstname;
 
+	@Column(name = "code_postal", length = 50, nullable = false)
+	private String codepostal;
 
-@Column(name = "code_postal", length = 50, nullable = false)
-private String codepostal;
+	@Column(name = "ville", length = 50, nullable = false)
+	private String ville;
 
-@Column(name = "ville", length = 50, nullable = false)
-private String ville;
+	@Column(name = "telephone", length = 50, nullable = false)
+	private String tel;
 
-@Column(name = "telephone", length = 50, nullable = false)
-private String tel;
+	@Column(name = "mobile", length = 50, nullable = false)
+	private String portable;
 
-@Column(name = "mobile", length = 50, nullable = false)
-private String portable;
+	@Column(name = "adresse", length = 50, nullable = false)
+	private String adresse;
+	
+	
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<Devis> listeDevis;
+	
+	
 
-@Column(name = "adresse", length = 50, nullable = false)
-private String adresse;
+	public List<Devis> getListeDevis() {
+		return listeDevis;
+	}
 
-public String getAdresse() {
-	return adresse;
-}
+	public void setListeDevis(List<Devis> listeDevis) {
+		this.listeDevis = listeDevis;
+	}
 
-public void setAdresse(String adresse) {
-	this.adresse = adresse;
-}
+	public String getAdresse() {
+		return adresse;
+	}
 
-public Integer getId() {
-	return id;
-}
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
 
-public void setId(Integer id) {
-	this.id = id;
-}
+	
+	
+	public Integer getId() {
+		return id;
+	}
 
-public String getName() {
-	return name;
-}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
+	public String getName() {
+		return name;
+	}
 
-public String getFirstname() {
-	return firstname;
-}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-public void setFirstname(String firstname) {
-	this.firstname = firstname;
-}
+	public String getFirstname() {
+		return firstname;
+	}
 
-public String getCodepostal() {
-	return codepostal;
-}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
 
-public void setCodepostal(String codepostal) {
-	this.codepostal = codepostal;
-}
+	public String getCodepostal() {
+		return codepostal;
+	}
 
-public String getVille() {
-	return ville;
-}
+	public void setCodepostal(String codepostal) {
+		this.codepostal = codepostal;
+	}
 
-public void setVille(String ville) {
-	this.ville = ville;
-}
+	public String getVille() {
+		return ville;
+	}
 
-public String getTel() {
-	return tel;
-}
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
 
-public void setTel(String tel) {
-	this.tel = tel;
-}
+	public String getTel() {
+		return tel;
+	}
 
-public String getPortable() {
-	return portable;
-}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 
-public void setPortable(String portable) {
-	this.portable = portable;
-}
+	public String getPortable() {
+		return portable;
+	}
 
-@Override
-public String toString() {
-	return "Client [id=" + id + ", name=" + name + ", firstname=" + firstname + ", codepostal=" + codepostal
-			+ ", ville=" + ville + ", tel=" + tel + ", portable=" + portable + "]";
-}
+	public void setPortable(String portable) {
+		this.portable = portable;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", name=" + name + ", firstname=" + firstname + ", codepostal=" + codepostal
+				+ ", ville=" + ville + ", tel=" + tel + ", portable=" + portable + "]";
+	}
 
 }

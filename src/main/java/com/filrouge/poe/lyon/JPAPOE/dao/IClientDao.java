@@ -10,5 +10,7 @@ public interface IClientDao {
 	void modifierClient(Client c);
 	void supprimerClient(Client c);
 	Client findClient(Integer i);
+	List<Client> requetenamed(String requete);
+	List<Client> requetenamed(String requete, String ...tab);
 
 }

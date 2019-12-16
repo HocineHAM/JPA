@@ -2,11 +2,9 @@ package com.filrouge.poe.lyon.JPAPOE.service.impl;
 
 import java.util.List;
 
-import com.filrouge.poe.lyon.JPAPOE.dao.IClientDao;
 import com.filrouge.poe.lyon.JPAPOE.dao.IVehiculeDao;
 import com.filrouge.poe.lyon.JPAPOE.dao.impl.Dao;
 import com.filrouge.poe.lyon.JPAPOE.dao.impl.VehiculeDao;
-import com.filrouge.poe.lyon.JPAPOE.model.Client;
 import com.filrouge.poe.lyon.JPAPOE.model.Vehicule;
 import com.filrouge.poe.lyon.JPAPOE.service.IVehiculeService;
 

@@ -3,7 +3,6 @@ package com.filrouge.poe.lyon.JPAPOE.dao.impl;
 import java.util.List;
 
 import com.filrouge.poe.lyon.JPAPOE.dao.IVehiculeDao;
-import com.filrouge.poe.lyon.JPAPOE.model.Client;
 import com.filrouge.poe.lyon.JPAPOE.model.Vehicule;
 
 public class VehiculeDao extends EntityDao<Vehicule> implements IVehiculeDao {

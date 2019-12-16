@@ -84,5 +84,60 @@ public class EntityDao<T> {
 			dao.closeEntityManager(em);
 		}
 	}
+	
+	public List<T> requeteNamed(Class<T> eclass, String requete) {
 
+		EntityManager em = null;
+		try {
+
+			em = dao.newEntityManager();
+			
+			TypedQuery<T> q = em.createNamedQuery(requete, eclass);
+			return q.getResultList();
+
+		} finally {
+			dao.closeEntityManager(em);
+		}
+	}
+	
+	public List<T> requeteNamed(Class<T> eclass, String requete, Object... o) {
+
+		EntityManager em = null;
+		try {
+
+			em = dao.newEntityManager();
+			int i =1;
+			TypedQuery<T> q = em.createNamedQuery(requete, eclass);
+			for(Object p: o) {
+				q.setParameter(i, p);
+				i++;
+			}
+			return q.getResultList();
+
+		} finally {
+			dao.closeEntityManager(em);
+		}
+	}
+	
+	public List<T> devisFindByClient(Class<T> eclass, String requete, String...param) {
+
+		EntityManager em = null;
+		try {
+
+			em = dao.newEntityManager();
+			int i =1;
+			TypedQuery<T> q = em.createNamedQuery(requete, eclass);
+			for(String p: param) {
+				q.setParameter(i, p);
+				i++;
+			}
+			return q.getResultList();
+
+		} finally {
+			dao.closeEntityManager(em);
+		}
+	}
+	
+	
+	
 }

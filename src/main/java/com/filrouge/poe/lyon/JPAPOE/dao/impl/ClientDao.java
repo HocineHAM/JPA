@@ -37,4 +37,17 @@ public class ClientDao extends EntityDao<Client> implements IClientDao {
 		return this.find(Client.class, i);
 	}
 
+	public List<Client> requetenamed(String requete) {
+		// TODO Auto-generated method stub
+		return this.requeteNamed(Client.class, requete);
+	}
+
+	@Override
+	public List<Client> requetenamed(String requete, String... tab) {
+		// TODO Auto-generated method stub
+		return this.requeteNamed(Client.class, requete, tab);
+	}
+
+	
+
 }
